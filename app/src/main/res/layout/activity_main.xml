@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -109,12 +110,12 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="선택"
-
                 android:layout_marginStart="24dp"
-
                 android:layout_marginTop="32dp"
+
+                android:layout_weight="1"
+
+                android:text="선택"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -156,7 +157,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop=""
-                        android:text="예금"
+                        android:text="입금"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="12sp"
@@ -192,7 +193,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop=""
-                        android:text="예금"
+                        android:text="출금"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="12sp"
@@ -228,7 +229,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop=""
-                        android:text="예금"
+                        android:text="add"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="12sp"
@@ -264,7 +265,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop=""
-                        android:text="예금"
+                        android:text="모두보기"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="12sp"
@@ -272,6 +273,62 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+
+                android:layout_weight="1"
+
+                android:text="코인 활동"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cryptoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+
+                />
+
         </LinearLayout>
     </ScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+
+            android:layout_gravity="bottom">
+
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:pointerIcon="wait"
+            android:src="@drawable/qrcode"
+            android:tint="@color/white"
+            />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
