@@ -1,5 +1,6 @@
 package com.min.finance_dashboard.Adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,21 @@ public class CrtproAdapter extends RecyclerView.Adapter<CrtproAdapter.Viewholder
 
     @Override
     public void onBindViewHolder(@NonNull CrtproAdapter.Viewholder holder, int position) {
+        holder.nameTxt.setText(dataList.get(position).getName());
+        holder.priceTxt.setText("$" + formatter.format(dataList.get(position).getPrice()));
+        holder.changePersentTxt.setText(dataList.get(position).getChangePercent() + "%");
+        holder.propertySizeTxt.setText(dataList.get(position).getPropertySize() + dataList.get(position).getSymbol());
+        holder.propertyAmountTxt.setText("$" + formatter.format(dataList.get(position).getPropertyAmount()));
+        holder.lineChart.setData(dataList.get(position).getLineData());
 
+        if (dataList.get(position).getChangePercent() > 0) {
+            holder.changePersentTxt.setTextColor(Color.parseColor("#12c737"));
+            holder.lineChart.setSparkLineColor(Color.parseColor("#12737"));
+        } else if (dataList.get(position).getChangePercent() < 0) {
+
+        } else {
+
+        }
     }
 
     @Override
@@ -44,19 +59,20 @@ public class CrtproAdapter extends RecyclerView.Adapter<CrtproAdapter.Viewholder
         return dataList.size();
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder{
-        TextView nameTxt,priceTxt,changePersentTxt,propertySizeTxt,propertyAmountTxt;
+    public class Viewholder extends RecyclerView.ViewHolder {
+        TextView nameTxt, priceTxt, changePersentTxt, propertySizeTxt, propertyAmountTxt;
         ImageView logo;
-
         SparkLineLayout lineChart;
+
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            nameTxt=itemView.findViewById(R.id.cryptoNameTxt);
-            priceTxt=itemView.findViewById(R.id.cryptoPriceTxt);
-            changePersentTxt=itemView.findViewById(R.id.changePriceTxt);
-            propertySizeTxt=itemView.findViewById(R.id.propertySizeTxt);
-            propertyAmountTxt=itemView.findViewById(R.id.propertyAmountTxt);
-            logo=itemView.findViewById(R.id.logoImg);
+            nameTxt = itemView.findViewById(R.id.cryptoNameTxt);
+            priceTxt = itemView.findViewById(R.id.cryptoPriceTxt);
+            changePersentTxt = itemView.findViewById(R.id.changePriceTxt);
+            propertySizeTxt = itemView.findViewById(R.id.propertySizeTxt);
+            propertyAmountTxt = itemView.findViewById(R.id.propertyAmountTxt);
+            logo = itemView.findViewById(R.id.logoImg);
+            lineChart = itemView.findViewById(R.id.sparkLineLayout);
         }
     }
 }
