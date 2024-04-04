@@ -11,6 +11,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.majorik.sparklinelibrary.SparkLineLayout;
 import com.min.finance_dashboard.Domain.domain;
 import com.min.finance_dashboard.R;
@@ -48,10 +49,18 @@ public class CrtproAdapter extends RecyclerView.Adapter<CrtproAdapter.Viewholder
             holder.changePersentTxt.setTextColor(Color.parseColor("#12c737"));
             holder.lineChart.setSparkLineColor(Color.parseColor("#12737"));
         } else if (dataList.get(position).getChangePercent() < 0) {
-
+            holder.changePersentTxt.setTextColor(Color.parseColor("#fc0000"));
+            holder.lineChart.setSparkLineColor(Color.parseColor("#fc0000"));
         } else {
-
+            holder.changePersentTxt.setTextColor(Color.parseColor("#ffffff"));
+            holder.lineChart.setSparkLineColor(Color.parseColor("#ffffff"));
         }
+
+        int drawableResourceId = holder.itemView.getContext().getResources()
+                .getIdentifier(dataList.get(position).getName(), "drawable", holder.itemView.getContext().getPackageName());
+        Glide.with(holder.itemView.getContext())
+                .load(drawableResourceId)
+                .into(holder.logo);
     }
 
     @Override
